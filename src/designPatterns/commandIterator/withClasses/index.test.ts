@@ -1,4 +1,10 @@
-import { App, OrderByNameAscCommand, OrderCommand, User } from '.';
+import {
+  App,
+  OrderByAgeAscCommand,
+  OrderByNameAscCommand,
+  OrderCommand,
+  User,
+} from '.';
 import { UserCollection } from './iterator';
 
 describe('App', () => {
@@ -10,9 +16,9 @@ describe('App', () => {
 
   beforeEach(() => {
     userCollection = new UserCollection();
-    John = new User('John', 'Doe', 25, 0);
-    Jane = new User('Jane', 'Smith', 30, 1);
-    Adam = new User('Adam', 'Johnson', 35, 2);
+    John = new User('John', 'Doe', 30, 0);
+    Jane = new User('Jane', 'Smith', 25, 1);
+    Adam = new User('Adam', 'Johnson', 18, 2);
     userCollection.addUser(John);
     userCollection.addUser(Jane);
     userCollection.addUser(Adam);
@@ -20,7 +26,20 @@ describe('App', () => {
     app = new App(userCollection);
   });
 
-  it('should sort users by name in ascending order', () => {
+  it('should sort users by age in ascending order', () => {
+    const command: OrderCommand = new OrderByAgeAscCommand();
+
+    const sortedUsers = app.sortUsers(command);
+    const iterator = sortedUsers.getIterator();
+
+    expect(iterator.next()).toBe(Adam);
+    expect(iterator.next()).toBe(Jane);
+    expect(iterator.next()).toBe(John);
+    expect(iterator.next()).toBe(undefined);
+    expect(iterator.hasNext()).toBe(false);
+  });
+
+  it('should sort users by age in ascending order', () => {
     const command: OrderCommand = new OrderByNameAscCommand();
 
     const sortedUsers = app.sortUsers(command);

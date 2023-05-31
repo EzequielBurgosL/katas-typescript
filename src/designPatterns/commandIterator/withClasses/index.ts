@@ -18,28 +18,43 @@ export interface OrderCommand {
   execute(users: UserCollection): UserCollection;
 }
 
-export class OrderByNameAscCommand implements OrderCommand {
+export class OrderByAgeAscCommand implements OrderCommand {
   execute(users: UserCollection): UserCollection {
-    const iterator = users.getIterator();
     const sortedUserCollection: UserCollection = new UserCollection();
-    let currentNode: User = iterator.next();
+    const iterator = users.getIterator();
+    const sortedUsers: User[] = [];
 
     while (iterator.hasNext()) {
-      let nextNode: User = iterator.next();
-
-      while (currentNode?.name) {
-        if (currentNode.name.localeCompare(nextNode.name) > 0) {
-          const tempNode = currentNode;
-          currentNode = nextNode;
-          nextNode = tempNode;
-        }
-
-        nextNode = iterator.next();
-      }
-
-      sortedUserCollection.addUser(currentNode);
-      currentNode = iterator.next();
+      sortedUsers.push(iterator.next());
     }
+
+    const sortedUserArray = sortedUsers.sort((a, b) => a.age - b.age);
+
+    sortedUserArray.forEach(user => {
+      sortedUserCollection.addUser(user);
+    });
+
+    return sortedUserCollection;
+  }
+}
+
+export class OrderByNameAscCommand implements OrderCommand {
+  execute(users: UserCollection): UserCollection {
+    const sortedUserCollection: UserCollection = new UserCollection();
+    const iterator = users.getIterator();
+    const sortedUsers: User[] = [];
+
+    while (iterator.hasNext()) {
+      sortedUsers.push(iterator.next());
+    }
+
+    const sortedUserArray = sortedUsers.sort((a, b) =>
+      a.name.localeCompare(b.name),
+    );
+
+    sortedUserArray.forEach(user => {
+      sortedUserCollection.addUser(user);
+    });
 
     return sortedUserCollection;
   }
