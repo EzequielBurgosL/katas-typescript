@@ -17,5 +17,6 @@ module.exports = {
     'object-curly-spacing': ['Error', 'always'],
     'operator-linebreak': ['error', 'after'],
     'no-unused-vars': 'off',
+    'generator-star-spacing': ['error', { before: false, after: true }],
   },
 };
