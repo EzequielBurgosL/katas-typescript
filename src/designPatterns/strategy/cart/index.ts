@@ -30,10 +30,18 @@ export class ShoppingCart implements Cart {
   }
 
   calculateBasePrice(): number {
-    return this.products.reduce((total, product) => total + product.basePrice, 0);
+    return this.products.reduce(
+      (total, product) => total + product.basePrice,
+      0,
+    );
   }
 
   calculateTotalPrice(): number {
-    return this.products.reduce((total, product) => total + this.pricingStrategy.calculatePrice(product.basePrice, product.taxes), 0);
+    return this.products.reduce(
+      (total, product) =>
+        total +
+        this.pricingStrategy.calculatePrice(product.basePrice, product.taxes),
+      0,
+    );
   }
 }

@@ -3,12 +3,14 @@ import { MockPricingStrategy } from '../strategy/__mocks__';
 import { ShoppingCart } from '.';
 
 describe('ShoppingCart', () => {
-  const freeTaxProduct = new MockProduct('id1', '1l water', 1, 0.00);
+  const freeTaxProduct = new MockProduct('id1', '1l water', 1, 0.0);
   const reducedTaxProduct = new MockProduct('id2', 'eco tomatos', 2, 0.04);
   const normalTaxProduct = new MockProduct('id2', 'tomatos', 1.6, 0.21);
 
   test('it should be instance of shopping cart', () => {
-    expect(new ShoppingCart(new MockPricingStrategy())).toBeInstanceOf(ShoppingCart);
+    expect(new ShoppingCart(new MockPricingStrategy())).toBeInstanceOf(
+      ShoppingCart,
+    );
   });
 
   describe('GIVEN a new shopping cart', () => {
@@ -69,4 +71,3 @@ describe('ShoppingCart', () => {
     });
   });
 });
-

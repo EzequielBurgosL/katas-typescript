@@ -1,6 +1,6 @@
 # Device Store
 
-Queremos crear una aplicación general para la construcción de dispositivos móviles. 
+Queremos crear una aplicación general para la construcción de dispositivos móviles.
 
 Este configurador debe servir para varias marcas: Apple, Xiaomi, Samsung, ...
 
@@ -17,7 +17,6 @@ Consideraciones:
 
 - Xiaomi y Samsung comparten Pantalla y CPU
 - Samsung y Apple comparten Battery
-
 
 **TASK 1**: Diseña un diagrama UML de clases para la aplicación. ¿Qué patrón nos podría ayudar a solucionar el problema?
 

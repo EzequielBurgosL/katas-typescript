@@ -4,7 +4,8 @@ export interface PricingStrategy {
 
 export class StandardPricingStrategy implements PricingStrategy {
   calculatePrice(basePrice: number, taxes: number): number {
-    return Number.parseFloat((basePrice + (basePrice * taxes)).toFixed(2));
+    const basePriceWithTaxes = basePrice * taxes;
+    return Number.parseFloat((basePrice + basePriceWithTaxes).toFixed(2));
   }
 }
 
@@ -12,7 +13,11 @@ export class BusinessPricingStrategy implements PricingStrategy {
   private BASE_DISCOUNT: number = 0.15;
 
   calculatePrice(basePrice: number, taxes: number): number {
-    const basePriceWithDiscount = basePrice - (basePrice * this.BASE_DISCOUNT);
-    return Number.parseFloat((basePriceWithDiscount + (basePriceWithDiscount * taxes)).toFixed(2));
+    const discount = basePrice * this.BASE_DISCOUNT;
+    const basePriceWithDiscount = basePrice - discount;
+    const basePriceWithTaxes = basePriceWithDiscount * taxes;
+    return Number.parseFloat(
+      (basePriceWithDiscount + basePriceWithTaxes).toFixed(2),
+    );
   }
 }

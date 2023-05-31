@@ -19,11 +19,11 @@ Tendremos 3 tipos de productos:
 
 Al cabo de unos meses, nuestro PO nos transmite una nueva necesidad:
 
-Debemos poder añadir un nuevo tipo de carrito de la compra exclusivo para negocios. 
+Debemos poder añadir un nuevo tipo de carrito de la compra exclusivo para negocios.
 
 Este carrito tiene la particularidad de disponer de un 15% de descuento directo sobre la base de todo el carrito.
 
-**TASK 2**: 
+**TASK 2**:
 ¿Cómo modificarías tu diseño anterior para cubrir la nueva necesidad?. ¿El diseño de la Task 1 viola algún principio SOLID?
 
 **TASK 3**:
