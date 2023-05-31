@@ -65,22 +65,3 @@ export class App {
     return this.users;
   }
 }
-
-const users: User[] = [
-  new User('Juan', 'Perez', 30, 2),
-  new User('Ana', 'Gomez', 25, 1),
-  new User('Carlos', 'Lopez', 40, 3),
-];
-
-const app = new App(users);
-
-const orderByNameAscCommand = new OrderByNameAscCommand();
-const orderByNameDescCommand = new OrderByNameDescCommand();
-const orderByAgeAscCommand = new OrderByAgeAscCommand();
-const orderByAgeDescCommand = new OrderByAgeDescCommand();
-const orderByChildrenAscCommand = new OrderByChildrenAscCommand();
-const orderByChildrenDescCommand = new OrderByChildrenDescCommand();
-
-app.sortUsers(orderByNameAscCommand);
-
-app.sortUsers(orderByAgeDescCommand);

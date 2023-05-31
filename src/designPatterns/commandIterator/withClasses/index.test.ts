@@ -1,0 +1,35 @@
+import { App, OrderByNameAscCommand, OrderCommand, User } from '.';
+import { UserCollection } from './iterator';
+
+describe('App', () => {
+  let app: App;
+  let userCollection: UserCollection;
+  let John;
+  let Jane;
+  let Adam;
+
+  beforeEach(() => {
+    userCollection = new UserCollection();
+    John = new User('John', 'Doe', 25, 0);
+    Jane = new User('Jane', 'Smith', 30, 1);
+    Adam = new User('Adam', 'Johnson', 35, 2);
+    userCollection.addUser(John);
+    userCollection.addUser(Jane);
+    userCollection.addUser(Adam);
+
+    app = new App(userCollection);
+  });
+
+  it('should sort users by name in ascending order', () => {
+    const command: OrderCommand = new OrderByNameAscCommand();
+
+    const sortedUsers = app.sortUsers(command);
+    const iterator = sortedUsers.getIterator();
+
+    expect(iterator.next()).toBe(Adam);
+    expect(iterator.next()).toBe(Jane);
+    expect(iterator.next()).toBe(John);
+    expect(iterator.next()).toBe(undefined);
+    expect(iterator.hasNext()).toBe(false);
+  });
+});
