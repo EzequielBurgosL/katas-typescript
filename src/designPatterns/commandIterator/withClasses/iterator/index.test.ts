@@ -1,4 +1,4 @@
-import { Iterator, UserCollection, UserIterator } from '.';
+import { Iterator, UserAgeIterator, UserCollection } from '.';
 import { User } from '..';
 
 describe('UserCollection', () => {
@@ -37,7 +37,7 @@ describe('UserCollection', () => {
     userCollection.addUser(user1);
     userCollection.addUser(user2);
 
-    const iterator: Iterator<User> = userCollection.getIterator();
+    const iterator: Iterator<User> = userCollection.getAgeIterator();
 
     expect(iterator.next()).toBe(user1);
     expect(iterator.next()).toBe(user2);
@@ -50,7 +50,8 @@ describe('UserCollection', () => {
     userCollection.addUser(user1);
     userCollection.addUser(user2);
 
-    const reverseIterator: Iterator<User> = userCollection.getReverseIterator();
+    const reverseIterator: Iterator<User> =
+      userCollection.getReverseAgeIterator();
 
     expect(reverseIterator.next()).toBe(user2);
     expect(reverseIterator.next()).toBe(user1);
@@ -73,7 +74,7 @@ describe('AlphabeticalOrderIterator', () => {
     userCollection.addUser(user2);
     userCollection.addUser(user3);
 
-    const iterator: Iterator<User> = new UserIterator(userCollection);
+    const iterator: Iterator<User> = new UserAgeIterator(userCollection);
 
     expect(iterator.next()).toBe(user1);
     expect(iterator.next()).toBe(user2);
@@ -82,14 +83,14 @@ describe('AlphabeticalOrderIterator', () => {
   });
 
   it('should iterate over users in reverse order', () => {
-    const user1 = new User('Jane', 'Smith', 30, 1);
-    const user2 = new User('Zoe', 'Doe', 25, 0);
+    const user1 = new User('Jane', 'Smith', 25, 1);
+    const user2 = new User('Zoe', 'Doe', 30, 0);
     const user3 = new User('Adam', 'Johnson', 35, 2);
     userCollection.addUser(user1);
     userCollection.addUser(user2);
     userCollection.addUser(user3);
 
-    const reverseIterator: Iterator<User> = new UserIterator(
+    const reverseIterator: Iterator<User> = new UserAgeIterator(
       userCollection,
       true,
     );

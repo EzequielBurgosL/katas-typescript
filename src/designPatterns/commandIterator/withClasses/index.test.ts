@@ -1,10 +1,9 @@
+import { App, User } from '.';
 import {
-  App,
   OrderByAgeAscCommand,
   OrderByNameAscCommand,
   OrderCommand,
-  User,
-} from '.';
+} from './command';
 import { UserCollection } from './iterator';
 
 describe('App', () => {
@@ -30,7 +29,7 @@ describe('App', () => {
     const command: OrderCommand = new OrderByAgeAscCommand();
 
     const sortedUsers = app.sortUsers(command);
-    const iterator = sortedUsers.getIterator();
+    const iterator = sortedUsers.getAgeIterator();
 
     expect(iterator.next()).toBe(Adam);
     expect(iterator.next()).toBe(Jane);
@@ -43,7 +42,7 @@ describe('App', () => {
     const command: OrderCommand = new OrderByNameAscCommand();
 
     const sortedUsers = app.sortUsers(command);
-    const iterator = sortedUsers.getIterator();
+    const iterator = sortedUsers.getNameIterator();
 
     expect(iterator.next()).toBe(Adam);
     expect(iterator.next()).toBe(Jane);
