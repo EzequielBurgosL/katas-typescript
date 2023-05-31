@@ -1,5 +1,4 @@
-// Definition of the Person class
-class Person {
+export class User {
   name: string;
   surname: string;
   age: number;
@@ -13,84 +12,68 @@ class Person {
   }
 }
 
-// Definition of the sorting command
-interface OrderCommand {
-  execute(people: Person[]): Person[];
+export interface OrderCommand {
+  execute(people: User[]): User[];
 }
 
-// Sorting command for ascending name
-class OrderByNameAscCommand implements OrderCommand {
-  execute(people: Person[]): Person[] {
+export class OrderByNameAscCommand implements OrderCommand {
+  execute(people: User[]): User[] {
     return people.slice().sort((a, b) => a.name.localeCompare(b.name));
   }
 }
 
-// Sorting command for descending name
-class OrderByNameDescCommand implements OrderCommand {
-  execute(people: Person[]): Person[] {
-    return people.slice().sort((a, b) => b.name.localeCompare(a.name));
+export class OrderByNameDescCommand implements OrderCommand {
+  execute(users: User[]): User[] {
+    return users.slice().sort((a, b) => b.name.localeCompare(a.name));
   }
 }
 
-// Sorting command for ascending age
-class OrderByAgeAscCommand implements OrderCommand {
-  execute(people: Person[]): Person[] {
-    return people.slice().sort((a, b) => a.age - b.age);
+export class OrderByAgeAscCommand implements OrderCommand {
+  execute(users: User[]): User[] {
+    return users.slice().sort((a, b) => a.age - b.age);
   }
 }
 
-// Sorting command for descending age
-class OrderByAgeDescCommand implements OrderCommand {
-  execute(people: Person[]): Person[] {
-    return people.slice().sort((a, b) => b.age - a.age);
+export class OrderByAgeDescCommand implements OrderCommand {
+  execute(users: User[]): User[] {
+    return users.slice().sort((a, b) => b.age - a.age);
   }
 }
 
-// Sorting command for ascending number of children
-class OrderByChildrenAscCommand implements OrderCommand {
-  execute(people: Person[]): Person[] {
-    return people.slice().sort((a, b) => a.children - b.children);
+export class OrderByChildrenAscCommand implements OrderCommand {
+  execute(users: User[]): User[] {
+    return users.slice().sort((a, b) => a.children - b.children);
   }
 }
 
-// Sorting command for descending number of children
-class OrderByChildrenDescCommand implements OrderCommand {
-  execute(people: Person[]): Person[] {
-    return people.slice().sort((a, b) => b.children - a.children);
+export class OrderByChildrenDescCommand implements OrderCommand {
+  execute(users: User[]): User[] {
+    return users.slice().sort((a, b) => b.children - a.children);
   }
 }
 
-// Class representing the application
-class App {
-  people: Person[];
+export class App {
+  users: User[];
 
-  constructor(people: Person[]) {
-    this.people = people;
+  constructor(users: User[]) {
+    this.users = users;
   }
 
-  sort(command: OrderCommand): void {
-    this.people = command.execute(this.people);
-    this.displayPeople();
-  }
+  sortUsers(command: OrderCommand): User[] {
+    this.users = command.execute(this.users);
 
-  displayPeople(): void {
-    // For (const person of this.people) {
-    //   console.log(${ person.name } ${ person.surname } - Age: ${ person.age } - Children: ${ person.children });
-    // }
+    return this.users;
   }
 }
 
-// Create some example people
-const people: Person[] = [
-  new Person('Juan', 'Perez', 30, 2),
-  new Person('Ana', 'Gomez', 25, 1),
-  new Person('Carlos', 'Lopez', 40, 3),
+const users: User[] = [
+  new User('Juan', 'Perez', 30, 2),
+  new User('Ana', 'Gomez', 25, 1),
+  new User('Carlos', 'Lopez', 40, 3),
 ];
 
-// Create the application
-const app = new App(people);
+const app = new App(users);
 
-// Example usage of sorting commands
 const orderByNameAscCommand = new OrderByNameAscCommand();
 const orderByNameDescCommand = new OrderByNameDescCommand();
 const orderByAgeAscCommand = new OrderByAgeAscCommand();
@@ -98,8 +81,6 @@ const orderByAgeDescCommand = new OrderByAgeDescCommand();
 const orderByChildrenAscCommand = new OrderByChildrenAscCommand();
 const orderByChildrenDescCommand = new OrderByChildrenDescCommand();
 
-// Sort by ascending name
-app.sort(orderByNameAscCommand);
+app.sortUsers(orderByNameAscCommand);
 
-// Sort by descending age
-app.sort(orderByAgeDescCommand);
+app.sortUsers(orderByAgeDescCommand);
