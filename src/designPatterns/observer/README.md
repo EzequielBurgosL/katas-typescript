@@ -8,6 +8,6 @@ Diseña e implementa el sistema. Para simular los datos en tiempo real podéis c
 
 La humedad se mide en % y la temeratura en ºC
 
-## UML design
+## UML diagram
 
-![alt text](observer-diagram.png)
+![alt text](uml-diagram.png)
