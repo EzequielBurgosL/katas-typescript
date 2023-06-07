@@ -7,3 +7,7 @@ Los datos se mostrarán en dos diferentes displays, uno para humedad y otro para
 Diseña e implementa el sistema. Para simular los datos en tiempo real podéis crear una entidad que genere datos nuevos cada segundo con `setInterval`, simulando ser el socket
 
 La humedad se mide en % y la temeratura en ºC
+
+## UML design
+
+![alt text](observer-diagram.png)
