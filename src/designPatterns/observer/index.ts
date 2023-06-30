@@ -13,7 +13,7 @@ abstract class Publisher {
     this.subscribers.filter(subscriber => subscriber.getId() !== id);
   }
 
-  notifySubscribers() {
+  protected notifySubscribers() {
     for (const subscriber of this.subscribers) {
       subscriber.update(this.state);
     }

@@ -8,7 +8,12 @@ export class TransactionRequest {
   }
 }
 
-abstract class AccountHolder {
+interface AccountHolder {
+  setNextAccountHolder(next: AccountHolder): void;
+  processTransaction(transaction: TransactionRequest): boolean;
+}
+
+abstract class BaseAccountHolder implements AccountHolder {
   name: string;
   private nextAccountHolder: AccountHolder = null;
 
@@ -24,7 +29,7 @@ abstract class AccountHolder {
     this.nextAccountHolder = next;
   }
 
-  processTransaction(transaction: TransactionRequest) {
+  processTransaction(transaction: TransactionRequest): boolean {
     const isTransactionApproved = this.approveTransaction(transaction);
 
     if (isTransactionApproved && this.nextAccountHolder) {
@@ -35,13 +40,13 @@ abstract class AccountHolder {
   }
 }
 
-export class Manager extends AccountHolder {
+export class Manager extends BaseAccountHolder {
   approveTransaction(transaction: TransactionRequest): boolean {
     return transaction.amount < 1000;
   }
 }
 
-export class Supervisor extends AccountHolder {
+export class Supervisor extends BaseAccountHolder {
   approveTransaction(transaction: TransactionRequest): boolean {
     return transaction.amount < 5000;
   }
