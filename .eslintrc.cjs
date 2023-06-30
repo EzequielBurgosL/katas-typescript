@@ -18,5 +18,6 @@ module.exports = {
     'operator-linebreak': ['error', 'after'],
     'no-unused-vars': 'off',
     'generator-star-spacing': ['error', { before: false, after: true }],
+    'no-useless-constructor': 'off',
   },
 };
