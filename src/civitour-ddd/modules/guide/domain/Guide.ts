@@ -1,7 +1,7 @@
-import { Entity } from '.';
-import { Guard } from '../../logic/Guard';
-import { Result } from '../../logic/Result';
-import { Name } from '../ValueObjects/Name';
+import { Entity } from '../../../core/domain/Entity';
+import { Name } from '../../../core/domain/ValueObjects/Name';
+import { Guard } from '../../../core/logic/Guard';
+import { Result } from '../../../core/logic/Result';
 
 interface GuideProps {
   name: Name;

@@ -1,10 +1,10 @@
 //  Título, la descripción y la localización donde se produce
-import { Entity } from '.';
-import { Guard } from '../../logic/Guard';
-import { Result } from '../../logic/Result';
-import { Description } from '../ValueObjects/Description';
-import { Location } from '../ValueObjects/Location';
-import { Title } from '../ValueObjects/Title';
+import { Entity } from '../../../core/domain/Entity';
+import { Description } from '../../../core/domain/ValueObjects/Description';
+import { Location } from '../../../core/domain/ValueObjects/Location';
+import { Title } from '../../../core/domain/ValueObjects/Title';
+import { Guard } from '../../../core/logic/Guard';
+import { Result } from '../../../core/logic/Result';
 
 interface StepProps {
   title: Title;

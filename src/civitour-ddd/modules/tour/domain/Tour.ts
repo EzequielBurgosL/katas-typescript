@@ -1,11 +1,11 @@
-import { Entity } from '.';
-import { Guard } from '../../logic/Guard';
-import { Result } from '../../logic/Result';
-import { City } from '../ValueObjects/City';
-import { Description } from '../ValueObjects/Description';
-import { MaxParticipants } from '../ValueObjects/MaxParticipants';
-import { Title } from '../ValueObjects/Title';
-import { Step } from './Step';
+import { Entity } from '../../../core/domain/Entity';
+import { City } from '../../../core/domain/ValueObjects/City';
+import { Description } from '../../../core/domain/ValueObjects/Description';
+import { MaxParticipants } from '../../../core/domain/ValueObjects/MaxParticipants';
+import { Title } from '../../../core/domain/ValueObjects/Title';
+import { Guard } from '../../../core/logic/Guard';
+import { Result } from '../../../core/logic/Result';
+import { Step } from '../../step/domain/Step';
 
 interface TourProps {
   title: Title;
