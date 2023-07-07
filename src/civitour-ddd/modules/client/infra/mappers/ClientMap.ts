@@ -5,15 +5,15 @@ import { PhoneNumber } from '../../../../core/domain/ValueObjects/PhoneNumber';
 import { Mapper } from '../../../../core/infra/Mapper';
 import { Client } from '../../domain/Client';
 
-type RawUser = {
+type rawClient = {
   entityId: string;
   name: string;
   phone: string;
   participantNumber: number;
 };
 
-export class ClientMap implements Mapper<Client> {
-  toPersistence(client: Client): RawUser {
+export class ClientMap implements Mapper<Client, rawClient> {
+  toPersistence(client: Client): rawClient {
     return {
       entityId: client.id.toString(),
       name: client.name.value,
@@ -22,7 +22,7 @@ export class ClientMap implements Mapper<Client> {
     };
   }
 
-  toDomain(raw: RawUser): Client {
+  toDomain(raw: rawClient): Client {
     const nameOrError = Name.create(raw.name);
     const phoneOrError = PhoneNumber.create(raw.phone);
     const participantNumberOrError = ParticipantNumber.create(
