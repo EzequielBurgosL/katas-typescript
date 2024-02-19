@@ -39,4 +39,6 @@ describe('StringCalculator', () => {
       );
     });
   });
+
+  // TODO: step 6 to 9
 });
